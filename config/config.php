@@ -1,5 +1,5 @@
 <?php
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'game_jam');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+const DB_HOST = 'localhost';
+const DB_NAME = 'game_jam';
+const DB_USER = 'root';
+const DB_PASS = '';
