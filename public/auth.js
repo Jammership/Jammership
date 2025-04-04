@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function () {
     const loginForm = document.getElementById('login-form');
     const registerForm = document.getElementById('register-form');
     const showRegisterLink = document.getElementById('show-register');
@@ -6,27 +6,59 @@ document.addEventListener('DOMContentLoaded', function() {
     const loginSection = document.getElementById('login-section');
     const registerSection = document.getElementById('register-section');
     const authContainer = document.getElementById('auth-container');
+    const mainContainer = document.getElementById('main-container')
 
-    showRegisterLink.addEventListener('click', function(e) {
+    if (isLoggedIn) {
+        authContainer.style.display = 'none';
+        mainContainer.style.display = 'block';
+    } else {
+        authContainer.style.display = 'block';
+        mainContainer.style.display = 'none';
+    }
+
+    showRegisterLink.addEventListener('click', function (e) {
         e.preventDefault();
         loginSection.style.display = 'none';
         registerSection.style.display = 'block';
     });
 
-    showLoginLink.addEventListener('click', function(e) {
+    showLoginLink.addEventListener('click', function (e) {
         e.preventDefault();
         registerSection.style.display = 'none';
         loginSection.style.display = 'block';
     });
 
-    registerForm.addEventListener('submit', function(event) {
+    registerForm.addEventListener('submit', function (event) {
         register(event, registerForm, registerSection, loginSection)
     });
 
-    loginForm.addEventListener('submit', function(event) {
+    loginForm.addEventListener('submit', function (event) {
         login(event, authContainer)
     });
 });
+
+function logoutUser() {
+    const formData = new FormData();
+    formData.append('action', 'logout');
+
+    fetch('auth_handler.php', {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                sessionStorage.clear();
+                // Force reload to get fresh state from server
+                window.location.reload();
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Logout error:', error);
+        });
+}
 
 function login(event, authContainer) {
     event.preventDefault();
@@ -55,7 +87,7 @@ function login(event, authContainer) {
                 sessionStorage.setItem('id', data.user['id']);
                 sessionStorage.setItem('role', data.user['role']);
                 sessionStorage.setItem('username', data.user['username']);
-                console.log("YOUPUIPUPUPPPEE")
+                window.location.reload();
             } else {
                 alert(data.message);
             }

@@ -1,5 +1,10 @@
 <?php
-session_start();
+session_start([
+    'cookie_lifetime' => 100, // 24 hours
+    'cookie_secure'   => false, // Should be true in production with HTTPS
+    'cookie_httponly' => true,
+    'cookie_samesite' => 'Lax'
+]);
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../classes/user.php';   // user class
 
@@ -83,4 +88,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             'message' => 'Login error: ' . $e->getMessage()
         ]);
     }
+}
+
+// Handle logout requests
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'logout') {
+    $user->logout();
+    echo json_encode([
+        'success' => true,
+        'message' => 'Logged out successfully'
+    ]);
+    exit;
+}
+
+function isLoggedIn() {
+    session_start();
+    return isset($_SESSION['id']);
 }

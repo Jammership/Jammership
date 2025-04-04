@@ -1,3 +1,8 @@
+<?php
+session_start();
+$loggedIn = isset($_SESSION['id']);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,10 +24,17 @@
         }
     </style>
     <script src="auth.js"></script>
+
+    <script>
+        const isLoggedIn = <?php echo $loggedIn ? 'true' : 'false'; ?>;
+    </script>
 </head>
 <body>
 <div class="container">
-    <div id="auth-container" class="auth-container">
+    <div id="main-container" class="main-container" style="<?php echo $loggedIn ? 'display:block' : 'display:none' ?>">
+        <button id="logout-button" class="btn btn-danger" onclick="logoutUser()">Logout</button>
+    </div>
+    <div id="auth-container" class="auth-container" style="<?php echo $loggedIn ? 'display:none' : 'display:block' ?>">
         <div id="login-section">
             <h2 class="text-center mb-4">Game Jam Login</h2>
             <form id="login-form">
@@ -44,7 +56,6 @@
                 </div>
             </form>
         </div>
-
         <div id="register-section" style="display:none;">
             <h2 class="text-center mb-4">Register for Game Jam</h2>
             <form id="register-form">
