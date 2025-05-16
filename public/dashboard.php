@@ -1,10 +1,10 @@
 <?php
-session_start();
-// Redirect to login page if not logged in
-if (!isset($_SESSION['id'])) {
-    header('Location: index.php');
-    exit;
-}
+//session_start();
+//// Redirect to login page if not logged in
+//if (!isset($_SESSION['id'])) {
+//    header('Location: index.php');
+//    exit;
+//}
 ?>
 
 <!DOCTYPE html>
@@ -64,8 +64,8 @@ if (!isset($_SESSION['id'])) {
     <div class="header-container">
         <h1>Game Jams</h1>
         <div>
-            <span class="me-2">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
-            <button class="btn btn-outline-danger" onclick="logoutUser()">Logout</button>
+<!--            <span class="me-2">Welcome, --><?php //echo htmlspecialchars($_SESSION['username']); ?><!--</span>-->
+<!--            <button class="btn btn-outline-danger" onclick="logoutUser()">Logout</button>-->
         </div>
     </div>
 
@@ -138,27 +138,27 @@ if (!isset($_SESSION['id'])) {
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    function logoutUser() {
-        const formData = new FormData();
-        formData.append('action', 'logout');
-
-        fetch('auth_handler.php', {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    sessionStorage.clear();
-                    window.location.href = 'index.php';
-                } else {
-                    alert(data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Logout error:', error);
-            });
-    }
+    // function logoutUser() {
+    //     const formData = new FormData();
+    //     formData.append('action', 'logout');
+    //
+    //     fetch('auth_handler.php', {
+    //         method: 'POST',
+    //         body: formData
+    //     })
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             if (data.success) {
+    //                 sessionStorage.clear();
+    //                 window.location.href = 'index.php';
+    //             } else {
+    //                 alert(data.message);
+    //             }
+    //         })
+    //         .catch(error => {
+    //             console.error('Logout error:', error);
+    //         });
+    // }
 </script>
 </body>
 </html>
