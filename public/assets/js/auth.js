@@ -1,4 +1,17 @@
+let isLoggedIn = false;
+
+function checkLoginStatus() {
+    if (sessionStorage.getItem('username')) {
+        isLoggedIn = true;
+    } else {
+        isLoggedIn = false;
+    }
+    return isLoggedIn;
+}
+
 document.addEventListener('DOMContentLoaded', async function () {
+    checkLoginStatus()
+
     const loginForm = document.getElementById('login-form');
     const registerForm = document.getElementById('register-form');
     const showRegisterLink = document.getElementById('show-register');
@@ -37,7 +50,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     });
 });
 
-function logoutUser() {
+function logoutUser(redirectUrl = null) {
     const formData = new FormData();
     formData.append('action', 'logout');
 
@@ -49,8 +62,11 @@ function logoutUser() {
         .then(data => {
             if (data.success) {
                 sessionStorage.clear();
-                // Force reload to get fresh state from server
-                window.location.reload();
+                if (redirectUrl) {
+                    window.location.href = redirectUrl;
+                } else {
+                    window.location.reload();
+                }
             } else {
                 alert(data.message);
             }
@@ -87,7 +103,7 @@ function login(event, authContainer) {
                 sessionStorage.setItem('id', data.user['id']);
                 sessionStorage.setItem('role', data.user['role']);
                 sessionStorage.setItem('username', data.user['username']);
-                window.location.reload();
+                window.location.href = 'dashboard.php';
             } else {
                 alert(data.message);
             }

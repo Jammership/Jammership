@@ -5,6 +5,8 @@ if (!isset($_SESSION['id'])) {
     header('Location: index.php');
     exit;
 }
+
+require_once '../includes/footer.php';
 ?>
 
 <!DOCTYPE html>
@@ -136,29 +138,6 @@ if (!isset($_SESSION['id'])) {
     <?php endif; ?>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    function logoutUser() {
-        const formData = new FormData();
-        formData.append('action', 'logout');
-
-        fetch('auth_handler.php', {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    sessionStorage.clear();
-                    window.location.href = 'index.php';
-                } else {
-                    alert(data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Logout error:', error);
-            });
-    }
-</script>
+<script src="assets/js/auth.js"></script>
 </body>
 </html>

@@ -110,8 +110,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     ]);
     exit;
 }
-
-function isLoggedIn() {
-    //session_start();
-    return isset($_SESSION['id']);
-}
