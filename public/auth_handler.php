@@ -1,4 +1,9 @@
 <?php
+ini_set('display_errors', 0);
+error_reporting(E_ALL);
+
+ob_start();
+
 session_start([
     'cookie_lifetime' => 100, // 24 hours
     'cookie_secure'   => false, // Should be true in production with HTTPS
@@ -44,7 +49,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             echo json_encode(['success' => false, 'message' => 'Registration failed. Email may already be registered.']);
         }
     } catch (PDOException $e) {
-        echo json_encode(['success' => false, 'message' => 'Registration error: ' . $e->getMessage()]);
+        if ($e->getCode() == 23000 && str_contains($e->getMessage(), 'Duplicate entry') && str_contains($e->getMessage(), 'username')) {
+            echo json_encode(['success' => false, 'message' => 'Username already taken. Please choose a different username.']);
+        } else if ($e->getCode() == 23000 && str_contains($e->getMessage(), 'Duplicate entry') && str_contains($e->getMessage(), 'email')) {
+            echo json_encode(['success' => false, 'message' => 'Email already registered. Please use a different email or login.']);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Registration error: ' . $e->getMessage()]);
+        }
     }
 }
 
@@ -101,6 +112,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 }
 
 function isLoggedIn() {
-    session_start();
+    //session_start();
     return isset($_SESSION['id']);
 }
