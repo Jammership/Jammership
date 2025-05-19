@@ -10,6 +10,8 @@ session_start([
     'cookie_httponly' => true,
     'cookie_samesite' => 'Lax'
 ]);
+
+require_once __DIR__ . '/../classes/database.php';
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../classes/user.php';   // user class
 
@@ -17,9 +19,8 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 try {
-    $db = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PASS);
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch(PDOException $e) {
+    $db = Database::getInstance()->getConnection();
+} catch (Exception $e) {
     echo json_encode(['success' => false, 'message' => 'Database connection failed: ' . $e->getMessage()]);
     exit;
 }
