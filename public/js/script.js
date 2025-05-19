@@ -26,6 +26,13 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
     // Redirect to homepage after login
     showPage("homepage");
 });
+// Simple click handler for every “Join Now” button
+document.querySelectorAll('.active-jams .btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        // you can read data-jam if needed: btn.dataset.jam
+        showPage('registerPage');
+    });
+});
 
 document.getElementById("registerForm").addEventListener("submit", function(e) {
     e.preventDefault();

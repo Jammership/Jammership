@@ -38,9 +38,36 @@
         </div>
 
         <!-- Jams -->
-        <div class="info-box">
-            <h2>Active GameJams to join:</h2>
+        <!-- Active Game Jams Section -->
+        <div class="info-box active-jams">
+            <h2>Active Game Jams to Join</h2>
+            <div class="jam-row">
+                <!-- Jam items hard‑coded -->
+                <div class="jam-item">
+                    <img src="https://via.placeholder.com/300x140?text=Space+Explorers"
+                         alt="Space Explorers Jam">
+                    <h3>Space Explorers Jam</h3>
+                    <p>Ends June 10, 2025</p>
+                    <button class="btn" data-jam="space-explorers">Join Now</button>
+                </div>
+                <div class="jam-item">
+                    <img src="https://via.placeholder.com/300x140?text=Retro+Pixel"
+                         alt="Retro Pixel Jam">
+                    <h3>Retro Pixel Jam</h3>
+                    <p>Ends June 15, 2025</p>
+                    <button class="btn" data-jam="retro-pixel">Join Now</button>
+                </div>
+                <div class="jam-item">
+                    <img src="https://via.placeholder.com/300x140?text=AI+Powered"
+                         alt="AI‑Powered Jam">
+                    <h3>AI‑Powered Jam</h3>
+                    <p>Ends June 20, 2025</p>
+                    <button class="btn" data-jam="ai-powered">Join Now</button>
+                </div>
+            </div>
         </div>
+
+
 
         <!-- About section -->
         <div class="info-box" id="about">
