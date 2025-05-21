@@ -50,34 +50,9 @@ document.addEventListener('DOMContentLoaded', async function () {
     });
 });
 
-function logoutUser(redirectUrl = null) {
-    const formData = new FormData();
-    formData.append('action', 'logout');
-
-    fetch('auth_handler.php', {
-        method: 'POST',
-        body: formData
-    })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                sessionStorage.clear();
-                if (redirectUrl) {
-                    window.location.href = redirectUrl;
-                } else {
-                    window.location.reload();
-                }
-            } else {
-                alert(data.message);
-            }
-        })
-        .catch(error => {
-            console.error('Logout error:', error);
-        });
-}
-
 function login(event, authContainer) {
     event.preventDefault();
+    console.log("LOGGING IN")
 
     const username = document.getElementById('login-username').value;
     const password = document.getElementById('login-password').value;
@@ -95,7 +70,6 @@ function login(event, authContainer) {
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             if (data.success) {
                 authContainer.style.display = 'none';
 
@@ -117,13 +91,10 @@ function login(event, authContainer) {
 function register(event, registerForm, registerSection, loginSection) {
     event.preventDefault();
 
-    console.log('Registering...');
     const username = document.getElementById('register-username').value;
     const email = document.getElementById('register-email').value;
     const password = document.getElementById('register-password').value;
     const userType = document.getElementById('register-user-type').value;
-
-    console.log(username, email, password, userType);
 
     if (!validateEmail(email)) {
         alert('Please enter a valid email address');

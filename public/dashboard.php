@@ -67,6 +67,9 @@ require_once '../includes/footer.php';
         <h1>Game Jams</h1>
         <div>
             <span class="me-2">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
+            <a href="account.php" class="btn btn-outline-primary me-2">
+                <i class="bi bi-person-circle"></i> Account
+            </a>
             <button class="btn btn-outline-danger" onclick="logoutUser()">Logout</button>
         </div>
     </div>
@@ -139,5 +142,6 @@ require_once '../includes/footer.php';
 </div>
 
 <script src="assets/js/auth.js"></script>
+<script src="assets/js/helper.js"></script>
 </body>
 </html>
