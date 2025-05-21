@@ -115,6 +115,6 @@ require_once '../includes/footer.php';
 </div>
 
 <script src="assets/js/account.js"></script>
-<script src="assets/js/helper.js"></script>
+<script src="assets/js/logout.js"></script>
 </body>
 </html>
