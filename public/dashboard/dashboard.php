@@ -6,68 +6,21 @@ if (!isset($_SESSION['id'])) {
     exit;
 }
 
+require_once '../includes/header.php';
 require_once '../includes/footer.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Dashboard - Game Jam Platform</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <style>
-        body {
-            background-color: #f4f4f4;
-            padding-top: 20px;
-        }
-        .jam-card {
-            transition: transform 0.3s ease;
-            cursor: pointer;
-            height: 100%;
-        }
-        .jam-card:hover {
-            transform: translateY(-5px);
-        }
-        .jam-image {
-            height: 200px;
-            object-fit: cover;
-            width: 100%;
-        }
-        .add-button {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: #0d6efd;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            z-index: 1000;
-        }
-        .add-button:hover {
-            background-color: #0b5ed7;
-        }
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-    </style>
-</head>
+<link rel="stylesheet" href="../assets/css/dashboard.css">
+
+<script src="../assets/js/logout.js"></script>
+
 <body>
 <div class="container">
     <div class="header-container">
         <h1>Game Jams</h1>
         <div>
             <span class="me-2">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
-            <a href="account.php" class="btn btn-outline-primary me-2">
+            <a href="../account/account.php" class="btn btn-outline-primary me-2">
                 <i class="bi bi-person-circle"></i> Account
             </a>
             <button class="btn btn-outline-danger" onclick="logoutUser()">Logout</button>
@@ -140,8 +93,4 @@ require_once '../includes/footer.php';
         </a>
     <?php endif; ?>
 </div>
-
-<script src="assets/js/auth.js"></script>
-<script src="assets/js/logout.js"></script>
 </body>
-</html>

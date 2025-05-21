@@ -1,0 +1,42 @@
+body {
+    background-color: #f4f4f4;
+    padding-top: 20px;
+}
+.jam-card {
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    height: 100%;
+}
+.jam-card:hover {
+    transform: translateY(-5px);
+}
+.jam-image {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
+.add-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #0d6efd;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+.add-button:hover {
+    background-color: #0b5ed7;
+}
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}

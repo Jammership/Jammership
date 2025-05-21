@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once '../classes/database.php';
-require_once '../classes/User.php';
+require_once '../classes/user.php';
 
 // Ensure user is logged in
 if (!isset($_SESSION['id'])) {

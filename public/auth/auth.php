@@ -9,9 +9,9 @@ if (isset($_SESSION['id'])) {
 }
 ?>
 
-<link rel="stylesheet" href="assets/css/auth.css">
-<script src="assets/js/auth.js"></script>
-<script src="assets/js/logout.js"></script>
+<link rel="stylesheet" href="../assets/css/auth.css">
+<script src="../assets/js/auth.js"></script>
+<script src="../assets/js/logout.js"></script>
 
 <body>
 <div class="container">

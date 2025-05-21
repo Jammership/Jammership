@@ -7,54 +7,21 @@ if (!isset($_SESSION['id'])) {
     exit;
 }
 
+require_once '../includes/header.php';
 require_once '../includes/footer.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My Account - Game Jam Platform</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <style>
-        body {
-            background-color: #f4f4f4;
-            padding-top: 20px;
-        }
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .account-section {
-            background-color: white;
-            border-radius: 8px;
-            padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .form-label {
-            font-weight: 500;
-        }
-        .danger-zone {
-            border: 1px solid #dc3545;
-            border-radius: 8px;
-            padding: 20px;
-            margin-top: 30px;
-        }
-        .danger-zone h3 {
-            color: #dc3545;
-        }
-    </style>
-</head>
+<link rel="stylesheet" href="../assets/css/account.css">
+
+<script src="../assets/js/account.js"></script>
+<script src="../assets/js/logout.js"></script>
+
 <body>
 <div class="container">
     <div class="header-container">
         <h1>My Account</h1>
         <div>
-            <a href="dashboard.php" class="btn btn-outline-secondary me-2">
+            <a href="../dashboard/dashboard.php" class="btn btn-outline-secondary me-2">
                 <i class="bi bi-arrow-left"></i> Back to Dashboard
             </a>
             <button class="btn btn-outline-danger" onclick="logoutUser()">Logout</button>
@@ -113,8 +80,4 @@ require_once '../includes/footer.php';
         </div>
     </div>
 </div>
-
-<script src="assets/js/account.js"></script>
-<script src="assets/js/logout.js"></script>
 </body>
-</html>
