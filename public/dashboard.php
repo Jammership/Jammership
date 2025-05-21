@@ -10,9 +10,9 @@ require_once '../includes/header.php';
 require_once '../includes/footer.php';
 ?>
 
-<link rel="stylesheet" href="../assets/css/dashboard.css">
+<link rel="stylesheet" href="assets/css/dashboard.css">
 
-<script src="../assets/js/logout.js"></script>
+<script src="assets/js/logout.js"></script>
 
 <body>
 <div class="container">
@@ -20,7 +20,7 @@ require_once '../includes/footer.php';
         <h1>Game Jams</h1>
         <div>
             <span class="me-2">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
-            <a href="../account/account.php" class="btn btn-outline-primary me-2">
+            <a href="account.php" class="btn btn-outline-primary me-2">
                 <i class="bi bi-person-circle"></i> Account
             </a>
             <button class="btn btn-outline-danger" onclick="logoutUser()">Logout</button>

@@ -11,17 +11,17 @@ require_once '../includes/header.php';
 require_once '../includes/footer.php';
 ?>
 
-<link rel="stylesheet" href="../assets/css/account.css">
+<link rel="stylesheet" href="assets/css/account.css">
 
-<script src="../assets/js/account.js"></script>
-<script src="../assets/js/logout.js"></script>
+<script src="assets/js/account.js"></script>
+<script src="assets/js/logout.js"></script>
 
 <body>
 <div class="container">
     <div class="header-container">
         <h1>My Account</h1>
         <div>
-            <a href="../dashboard/dashboard.php" class="btn btn-outline-secondary me-2">
+            <a href="dashboard.php" class="btn btn-outline-secondary me-2">
                 <i class="bi bi-arrow-left"></i> Back to Dashboard
             </a>
             <button class="btn btn-outline-danger" onclick="logoutUser()">Logout</button>
