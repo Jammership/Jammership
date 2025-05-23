@@ -13,7 +13,7 @@
 <body>
 <!-- Header -->
 <div class="header">
-    <div class="logo">GAMEJAM</div>
+    <div class="logo">JAMMERSHIP</div>
 </div>
 
 <!-- Navigation -->
@@ -32,8 +32,8 @@
     <div class="container">
         <!-- Hero section -->
         <div class="hero">
-            <h1>WELCOME TO GAMEJAM FESTIVAL!</h1>
-            <p>Join us for an exciting 48-hour game development challenge where creativity meets technology</p>
+            <h1>WELCOME TO JAMMERSHIP COMMUNITY!</h1>
+            <p>Founders of TEDUJAM</p>
             <button class="btn" onclick="showPage('registerPage')">Register Now</button>
         </div>
 
@@ -71,7 +71,7 @@
 
         <!-- About section -->
         <div class="info-box" id="about">
-            <h2>About GameJam</h2>
+            <h2>About Jammership Community</h2>
             <p>GameJam is a fun competition where you create a video game from scratch in 48 hours! Whether you're a beginner or expert, you can join and have fun making games.</p>
             <p>You can work alone or in teams of up to 4 people. We'll announce a surprise theme at the start!</p>
         </div>
@@ -87,7 +87,7 @@
 
         <!-- Prizes section -->
         <div class="info-box">
-            <h2>Awesome Prizes</h2>
+            <h2>Prizes for the upcoming TEDUJAM</h2>
             <p>🏆 <strong>1st Place:</strong> $500 and gaming gear</p>
             <p>🥈 <strong>2nd Place:</strong> $250 and software licenses</p>
             <p>🥉 <strong>3rd Place:</strong> $100 and swag pack</p>
