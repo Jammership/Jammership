@@ -6,6 +6,7 @@ class user {
         $this->db = $db;
     }
 
+
     public function register($email, $password, $role, $username): bool{
         $hashed = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $this->db->prepare("INSERT INTO users (email, password, role, username) VALUES (?, ?, ?, ?)");
@@ -54,7 +55,7 @@ class user {
      */
     public function updateEmail($userId, $email) {
         $query = "UPDATE users SET email = :email WHERE id = :id";
-        $stmt = $this->pdo->prepare($query);
+        $stmt = $this->db->prepare($query);
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
         return $stmt->execute();
@@ -68,7 +69,7 @@ class user {
      */
     public function verifyPassword($userId, $password) {
         $query = "SELECT password FROM users WHERE id = :id";
-        $stmt = $this->pdo->prepare($query);
+        $stmt = $this->db->prepare($query);
         $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
         $stmt->execute();
 
@@ -89,7 +90,7 @@ class user {
     public function updatePassword($userId, $newPassword) {
         $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
         $query = "UPDATE users SET password = :password WHERE id = :id";
-        $stmt = $this->pdo->prepare($query);
+        $stmt = $this->db->prepare($query);
         $stmt->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
         $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
         return $stmt->execute();
@@ -102,7 +103,7 @@ class user {
      */
     public function deleteAccount($userId) {
         $query = "DELETE FROM users WHERE id = :id";
-        $stmt = $this->pdo->prepare($query);
+        $stmt = $this->db->prepare($query);
         $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
         return $stmt->execute();
     }
