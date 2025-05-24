@@ -41,55 +41,58 @@ if (isset($_SESSION['id'])) {
         <li></li>
     </ul>
 </div>
-<div class="container">
-    <div id="main-container" class="main-container" style="<?php echo isUserLoggedIn() ? 'display:block' : 'display:none' ?>">
-        <button id="logout-button" class="btn btn-danger" onclick="logoutUser()">Logout</button>
-    </div>
-    <div id="auth-container" class="auth-container" style="<?php echo isUserLoggedIn() ? 'display:none' : 'display:block' ?>">
-        <div id="login-section">
-            <h2 class="text-center mb-4">Game Jam Login</h2>
-            <form id="login-form">
-                <div class="mb-3">
-                    <input type="text" class="form-control" id="login-username" placeholder="Username" required>
-                </div>
-                <div class="mb-3">
-                    <input type="password" class="form-control" id="login-password" placeholder="Password" required>
-                </div>
-                <div class="mb-3">
-                    <select class="form-control" id="login-user-type">
-                        <option value="jammer">Jammer</option>
-                        <option value="organizer">Jam Organizer</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-primary w-100">Login</button>
-                <div class="text-center mt-3">
-                    <a href="#" id="show-register">Create an Account</a>
-                </div>
-            </form>
+<div class="jammership-wrapper">
+    <h1 class="jammership-heading">Jammership</h1>
+    <div class="container">
+        <div id="main-container" class="main-container" style="<?php echo isUserLoggedIn() ? 'display:block' : 'display:none' ?>">
+            <button id="logout-button" class="btn btn-danger" onclick="logoutUser()">Logout</button>
         </div>
-        <div id="register-section" style="display:none;">
-            <h2 class="text-center mb-4">Register for GameJam</h2>
-            <form id="register-form">
-                <div class="mb-3">
-                    <input type="text" class="form-control" id="register-username" placeholder="Username" required>
-                </div>
-                <div class="mb-3">
-                    <input type="email" class="form-control" id="register-email" placeholder="Email" required>
-                </div>
-                <div class="mb-3">
-                    <input type="password" class="form-control" id="register-password" placeholder="Password" required>
-                </div>
-                <div class="mb-3">
-                    <select class="form-control" id="register-user-type">
-                        <option value="jammer">Jammer</option>
-                        <option value="organizer">Jam Organizer</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-success w-100">Register</button>
-                <div class="text-center mt-3">
-                    <a href="#" id="show-login">Back to Login</a>
-                </div>
-            </form>
+        <div id="auth-container" class="auth-container" style="<?php echo isUserLoggedIn() ? 'display:none' : 'display:block' ?>">
+            <div id="login-section">
+                <h2 class="text-center mb-4">Game Jam Login</h2>
+                <form id="login-form">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="login-username" placeholder="Username" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" id="login-password" placeholder="Password" required>
+                    </div>
+                    <div class="mb-3">
+                        <select class="form-control" id="login-user-type">
+                            <option value="jammer">Jammer</option>
+                            <option value="organizer">Jam Organizer</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Login</button>
+                    <div class="text-center mt-3">
+                        <a href="#" id="show-register">Create an Account</a>
+                    </div>
+                </form>
+            </div>
+            <div id="register-section" style="display:none;">
+                <h2 class="text-center mb-4">Register for GameJam</h2>
+                <form id="register-form">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="register-username" placeholder="Username" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" id="register-email" placeholder="Email" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" id="register-password" placeholder="Password" required>
+                    </div>
+                    <div class="mb-3">
+                        <select class="form-control" id="register-user-type">
+                            <option value="jammer">Jammer</option>
+                            <option value="organizer">Jam Organizer</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Register</button>
+                    <div class="text-center mt-3">
+                        <a href="#" id="show-login">Back to Login</a>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

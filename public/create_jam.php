@@ -19,14 +19,29 @@ require_once '../includes/footer.php';
 <script src="assets/js/logout.js"></script>
 
 <body>
+<div class="area">
+    <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
 <div class="container">
     <div class="header-container">
-        <h1>Create New Game Jam</h1>
+        <h1 class="create-jam-heading">Create New Game Jam</h1>
         <div>
-            <a href="dashboard.php" class="btn btn-outline-secondary me-2">
+            <a href="dashboard.php" class="btn btn-gradient me-2">
                 <i class="bi bi-arrow-left"></i> Back to Dashboard
             </a>
-            <button class="btn btn-outline-danger" onclick="logoutUser()">Logout</button>
+            <button class="btn btn-gradient" onclick="logoutUser()">Logout</button>
         </div>
     </div>
 

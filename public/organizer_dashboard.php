@@ -26,73 +26,79 @@ $jams = $jamManager->getOrganizerJams($_SESSION['id']);
 <script src="assets/js/logout.js"></script>
 
 <body>
-
+<div class="area">
+    <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
 <div class="container">
     <div class="header-container">
-        <h1>Organizer Dashboard</h1>
+        <h1 class="create-jam-heading">Organizer Dashboard</h1>
         <div>
             <a href="create_jam.php" class="btn btn-outline-primary me-2">
                 <i class="bi bi-plus-lg"></i> Create New Jam
             </a>
-            <a href="dashboard.php" class="btn btn-outline-secondary me-2">
-                <i class="bi bi-arrow-left"></i> Back to Jams
-            </a>
-            <button class="btn btn-outline-danger" onclick="logoutUser()">Logout</button>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12">
-            <div class="jam-card">
-                <h2>Your Game Jams</h2>
-
-                <?php if (count($jams) > 0): ?>
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Status</th>
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                                <th>Applications</th>
-                                <th>Actions</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php foreach ($jams as $jam): ?>
-                                <tr>
-                                    <td><?= htmlspecialchars($jam['title']) ?></td>
-                                    <td>
-                                            <span class="status-badge status-<?= $jam['status'] ?>">
-                                                <?= ucfirst($jam['status']) ?>
-                                            </span>
-                                    </td>
-                                    <td><?= date('M j, Y, g:i a', strtotime($jam['start_date'])) ?></td>
-                                    <td><?= date('M j, Y, g:i a', strtotime($jam['end_date'])) ?></td>
-                                    <td>
-                                        <a href="view_applications.php?jam_id=<?= $jam['id'] ?>" class="btn btn-sm btn-info">
-                                            <?= $jam['application_count'] ?> Applications
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a href="edit_jam.php?id=<?= $jam['id'] ?>" class="btn btn-sm btn-primary">
-                                            <i class="bi bi-pencil"></i> Edit
-                                        </a>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                <?php else: ?>
-                    <div class="alert alert-info">
-                        You haven't created any game jams yet.
-                        <a href="create_jam.php">Create your first jam!</a>
-                    </div>
-                <?php endif; ?>
+            <div>
+                <a href="dashboard.php" class="btn btn-gradient me-2">
+                    <i class="bi bi-arrow-left"></i> Back to Dashboard
+                </a>
+                <button class="btn btn-gradient" onclick="logoutUser()">Logout</button>
             </div>
         </div>
     </div>
-</div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Your Game Jams</h2>
+            <?php if (count($jams) > 0): ?>
+                <?php foreach ($jams as $jam): ?>
+                    <div class="jam-card jam-card-flex">
+                        <div class="jam-details">
+                            <h3><?= htmlspecialchars($jam['title']) ?></h3>
+                            <div>
+                            <span class="status-badge status-<?= $jam['status'] ?>">
+                                <?= ucfirst($jam['status']) ?>
+                            </span>
+                            </div>
+                            <div>
+                                <strong>Start:</strong> <?= date('M j, Y, g:i a', strtotime($jam['start_date'])) ?>
+                            </div>
+                            <div>
+                                <strong>End:</strong> <?= date('M j, Y, g:i a', strtotime($jam['end_date'])) ?>
+                            </div>
+                            <div>
+                                <a href="view_applications.php?jam_id=<?= $jam['id'] ?>" class="btn btn-sm btn-info">
+                                    <?= $jam['application_count'] ?> Applications
+                                </a>
+                            </div>
+                        </div>
+                        <div class="jam-actions">
+                            <a href="edit_jam.php?id=<?= $jam['id'] ?>" class="btn btn-sm btn-primary">
+                                <i class="bi bi-pencil"></i> Edit
+                            </a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div class="alert alert-info">
+                    You haven't created any game jams yet.
+                    <a href="create_jam.php">Create your first jam!</a>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
 </body>

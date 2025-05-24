@@ -41,6 +41,26 @@ $applications = $jamManager->getJamApplications($_GET['jam_id']);
 <script src="assets/js/logout.js"></script>
 
 <body>
+<div class="area">
+    <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
 <div class="container">
     <div class="header-container">
         <h1>Applications for "<?= htmlspecialchars($jam['title']) ?>"</h1>

@@ -43,7 +43,7 @@ $jams = $jamManager->getAllJams();
 </div>
 <div class="container">
     <div class="header-container">
-        <h1>Game Jams</h1>
+        <h1 class="create-jam-heading">Game Jams</h1>
         <div>
             <span class="me-2">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
 
@@ -57,6 +57,7 @@ $jams = $jamManager->getAllJams();
                 <i class="bi bi-person-circle"></i> Account
             </a>
             <button class="btn btn-outline-danger" onclick="logoutUser()">Logout</button>
+
         </div>
     </div>
 

@@ -20,6 +20,7 @@ require_once '../includes/footer.php';
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="assets/css/account.css">
+<link rel="stylesheet" href="assets/css/dashboard.css">
 <script src="assets/js/account.js"></script>
 <script src="assets/js/logout.js"></script>
 
@@ -41,7 +42,7 @@ require_once '../includes/footer.php';
 </div>
 <div class="container">
     <div class="header-container">
-        <h1>My Account</h1>
+        <h1 class="create-jam-heading">My Account</h1>
         <div>
             <a href="dashboard.php" class="btn btn-outline-secondary me-2">
                 <i class="bi bi-arrow-left"></i> Back to Dashboard

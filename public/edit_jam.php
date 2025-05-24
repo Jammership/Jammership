@@ -38,9 +38,29 @@ if (!$jam || $jam['organizator_id'] != $_SESSION['id']) {
 <script src="assets/js/logout.js"></script>
 
 <body>
+<div class="area">
+    <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
 <div class="container">
     <div class="header-container">
-        <h1>Edit Game Jam</h1>
+        <h1 class="create-jam-heading">Edit Game Jam</h1>
         <div>
             <a href="view_applications.php?jam_id=<?= $jam['id'] ?>" class="btn btn-outline-primary me-2">
                 <i class="bi bi-people"></i> View Applications
