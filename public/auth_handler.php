@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         exit;
     }
 
-    if (strlen($password) <= 0) {
+    if (strlen($password) <= 7) {
         echo json_encode(['success' => false, 'message' => 'Password must be at least 8 characters long']);
         exit;
     }
