@@ -21,7 +21,26 @@ if (isset($_SESSION['id'])) {
 <script src="assets/js/logout.js"></script>
 
 <body>
-
+<div class="area">
+    <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
 <div class="container">
     <div id="main-container" class="main-container" style="<?php echo isUserLoggedIn() ? 'display:block' : 'display:none' ?>">
         <button id="logout-button" class="btn btn-danger" onclick="logoutUser()">Logout</button>
