@@ -26,6 +26,21 @@ $jams = $jamManager->getAllJams();
 <script src="assets/js/logout.js"></script>
 
 <body>
+<div class="area">
+    <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
 <div class="container">
     <div class="header-container">
         <h1>Game Jams</h1>

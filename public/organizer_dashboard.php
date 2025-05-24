@@ -26,6 +26,7 @@ $jams = $jamManager->getOrganizerJams($_SESSION['id']);
 <script src="assets/js/logout.js"></script>
 
 <body>
+
 <div class="container">
     <div class="header-container">
         <h1>Organizer Dashboard</h1>
