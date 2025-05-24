@@ -1,0 +1,18 @@
+{
+  "functions": {
+    "api/*.php": {
+      "runtime": "vercel-php@0.6.0"
+    }
+  },
+  "routes": [
+    { "src": "/account", "dest": "/api/account.php" },
+    { "src": "/auth", "dest": "/api/auth.php" },
+    { "src": "/create_jam", "dest": "/api/create_jam.php" },
+    { "src": "/dashboard", "dest": "/api/dashboard.php" },
+    { "src": "/edit_jam", "dest": "/api/edit_jam.php" },
+    { "src": "/jam_details", "dest": "/api/jam_details.php" },
+    { "src": "/organizer_dashboard", "dest": "/api/organizer_dashboard.php" },
+    { "src": "/view_applications", "dest": "/api/view_applications.php" },
+    { "src": "/(.*)", "dest": "/api/index.php" }
+  ]
+}
