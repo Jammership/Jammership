@@ -13,12 +13,16 @@ class user {
         return $stmt->execute([$email, $hashed, $role, $username]);
     }
 
-    public function login($username, $password): bool {
+    public function login($username, $password, $role): bool {
         $stmt = $this->db->prepare("SELECT * FROM users WHERE username = ?");
         $stmt->execute([$username]);
         $user = $stmt->fetch();
 
         if($user && password_verify($password, $user['password'])) {
+            if ($user['role'] !== $role) {
+                return false; // Role mismatch
+            }
+
             $_SESSION['id'] = $user['id'];
             $_SESSION['role'] = $user['role'];
             $_SESSION['email'] = $user['email'];

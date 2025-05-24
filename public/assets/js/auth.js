@@ -52,7 +52,6 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 function login(event, authContainer) {
     event.preventDefault();
-    console.log("LOGGING IN")
 
     const username = document.getElementById('login-username').value;
     const password = document.getElementById('login-password').value;

@@ -63,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'login') {
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
     $password = $_POST['password'];
+    $userType = $_POST['userType'] ?? 'jammer';
 
     if (!$username) {
         echo json_encode(['success' => false, 'message' => 'Invalid username', 'test' => $username]);
@@ -75,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     }
 
     try {
-        if ($user->login($username, $password)) {
+        if ($user->login($username, $password, $userType)) {
             session_regenerate_id(true);
             echo json_encode([
                 'success' => true,
@@ -91,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             // Login failed
             echo json_encode([
                 'success' => false,
-                'message' => 'Invalid email or password'
+                'message' => 'Invalid email or password or role'
             ]);
         }
     } catch (PDOException $e) {
