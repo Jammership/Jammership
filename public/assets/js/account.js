@@ -89,6 +89,7 @@ function deleteAccount() {
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
+                        logoutUser()
                         alert('Your account has been deleted');
                         window.location.href = 'index.php';
                     } else {

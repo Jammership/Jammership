@@ -101,7 +101,8 @@ class user {
      * @param int $userId
      * @return bool
      */
-    public function deleteAccount($userId) {
+    public function deleteAccount($userId): bool
+    {
         $query = "DELETE FROM users WHERE id = :id";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
