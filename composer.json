@@ -1,7 +1,7 @@
 {
   "require": {
-    "": "<default>",
-    "ext-pdo": "*"
+    "ext-pdo": "*",
+    "vlucas/phpdotenv": "^5.5"
   },
   "autoload": {
     "psr-4": {
