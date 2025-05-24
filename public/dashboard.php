@@ -6,17 +6,21 @@ if (!isset($_SESSION['id'])) {
     exit;
 }
 
+require_once '../classes/database.php';
+require_once '../classes/gamejam.php';
 require_once '../includes/header.php';
 require_once '../includes/footer.php';
+
+// Get jams from database
+$db = database::getInstance()->getConnection();
+$jamManager = new GameJam($db);
+$jamManager->updateJamStatuses(); // Update statuses based on dates
+$jams = $jamManager->getAllJams();
 ?>
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-
-<!-- Optional theme -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="assets/css/dashboard.css">
 <script src="assets/js/logout.js"></script>
@@ -27,6 +31,13 @@ require_once '../includes/footer.php';
         <h1>Game Jams</h1>
         <div>
             <span class="me-2">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
+
+            <?php if ($_SESSION['role'] === 'organizer'): ?>
+                <a href="organizer_dashboard.php" class="btn btn-outline-primary me-2">
+                    <i class="bi bi-speedometer2"></i> Organizer Dashboard
+                </a>
+            <?php endif; ?>
+
             <a href="account.php" class="btn btn-outline-primary me-2">
                 <i class="bi bi-person-circle"></i> Account
             </a>
@@ -35,62 +46,50 @@ require_once '../includes/footer.php';
     </div>
 
     <div class="row g-4">
-        <!-- Sample jam cards - these would be dynamically generated from database -->
-        <div class="col-md-4 col-sm-6">
-            <div class="card jam-card">
-                <img src="https://via.placeholder.com/400x200?text=Game+Jam+1" class="jam-image card-img-top" alt="Game Jam 1">
-                <div class="card-body">
-                    <h5 class="card-title">Pixel Art Jam</h5>
-                    <p class="card-text">Create games with pixel art style. Starts June 15th.</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <small class="text-muted">48 hours</small>
-                        <span class="badge bg-success">Active</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php if (!empty($jams)): ?>
+            <?php foreach ($jams as $jam): ?>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card jam-card" data-jam-id="<?= htmlspecialchars($jam['id']) ?>">
+                        <img src="<?= htmlspecialchars($jam['thumbnail'] ?: 'https://via.placeholder.com/400x200?text=Game+Jam') ?>"
+                             class="jam-image card-img-top" alt="<?= htmlspecialchars($jam['title']) ?>">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= htmlspecialchars($jam['title']) ?></h5>
+                            <p class="card-text"><?= htmlspecialchars(substr($jam['description'], 0, 100)) . (strlen($jam['description']) > 100 ? '...' : '') ?></p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <?php
+                                $start = new DateTime($jam['start_date']);
+                                $end = new DateTime($jam['end_date']);
+                                $duration = $start->diff($end);
+                                $hours = ($duration->days * 24) + $duration->h;
+                                ?>
+                                <small class="text-muted"><?= $hours ?> hours</small>
 
-        <div class="col-md-4 col-sm-6">
-            <div class="card jam-card">
-                <img src="https://via.placeholder.com/400x200?text=Game+Jam+2" class="jam-image card-img-top" alt="Game Jam 2">
-                <div class="card-body">
-                    <h5 class="card-title">Solo Dev Challenge</h5>
-                    <p class="card-text">Build a complete game by yourself in 72 hours.</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <small class="text-muted">72 hours</small>
-                        <span class="badge bg-warning">Coming Soon</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+                                <?php if ($jam['status'] === 'active'): ?>
+                                    <span class="badge bg-success">Active</span>
+                                <?php elseif ($jam['status'] === 'upcoming'): ?>
+                                    <span class="badge bg-warning">Coming Soon</span>
+                                <?php else: ?>
+                                    <span class="badge bg-secondary">Ended</span>
+                                <?php endif; ?>
+                            </div>
 
-        <div class="col-md-4 col-sm-6">
-            <div class="card jam-card">
-                <img src="https://via.placeholder.com/400x200?text=Game+Jam+3" class="jam-image card-img-top" alt="Game Jam 3">
-                <div class="card-body">
-                    <h5 class="card-title">Retro Theme Jam</h5>
-                    <p class="card-text">Create games inspired by the 80s and 90s.</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <small class="text-muted">96 hours</small>
-                        <span class="badge bg-secondary">Ended</span>
+                            <?php if ($_SESSION['role'] === 'jammer' && $jam['status'] !== 'ended'): ?>
+                                <button class="btn btn-sm btn-primary apply-btn mt-2" data-jam-id="<?= $jam['id'] ?>">Apply</button>
+                            <?php endif; ?>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 col-sm-6">
-            <div class="card jam-card">
-                <img src="https://via.placeholder.com/400x200?text=Game+Jam+4" class="jam-image card-img-top" alt="Game Jam 4">
-                <div class="card-body">
-                    <h5 class="card-title">Horror Game Jam</h5>
-                    <p class="card-text">Make the spookiest game you can!</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <small class="text-muted">48 hours</small>
-                        <span class="badge bg-primary">Registration Open</span>
-                    </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <div class="col-12">
+                <div class="alert alert-info">
+                    No game jams available at the moment.
+                    <?php if ($_SESSION['role'] === 'organizer'): ?>
+                        <a href="create_jam.php">Create one now!</a>
+                    <?php endif; ?>
                 </div>
             </div>
-        </div>
+        <?php endif; ?>
     </div>
 
     <!-- Add button (visible for organizers only) -->
@@ -100,4 +99,6 @@ require_once '../includes/footer.php';
         </a>
     <?php endif; ?>
 </div>
+
+<script src="assets/js/dashboard.js"></script>
 </body>

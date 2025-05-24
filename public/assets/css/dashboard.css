@@ -119,3 +119,43 @@ a:hover {
     color: #6e8efb;
     text-decoration: underline;
 }
+
+/* Status badges */
+.status-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.status-pending {
+    background-color: #fcf8e3;
+    color: #8a6d3b;
+}
+
+.status-accepted {
+    background-color: #dff0d8;
+    color: #3c763d;
+}
+
+.status-rejected {
+    background-color: #f2dede;
+    color: #a94442;
+}
+
+/* Avatar image */
+.avatar-img {
+    border-radius: 50%;
+    margin-right: 8px;
+    object-fit: cover;
+}
+
+/* Jam info section */
+.jam-info {
+    background-color: #f9f9ff;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-left: 4px solid #6e8efb;
+}

@@ -11,24 +11,26 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- CREATE TABLE jams (
---         id INT PRIMARY KEY AUTO_INCREMENT,
---         title VARCHAR(255) NOT NULL,
---         description TEXT,
---         start_date DATETIME NOT NULL,
---         end_date DATETIME NOT NULL,
---         type ENUM('online', 'physical') DEFAULT 'online',
---         thumbnail VARCHAR(255),
---         organizator_id INT,
---         FOREIGN KEY (organizator_id) REFERENCES users(id)
--- );
---
--- CREATE TABLE applications (
---         id INT PRIMARY KEY AUTO_INCREMENT,
---         jam_id INT,
---         user_id INT,
---         status ENUM('pending', 'accepted', 'rejected') DEFAULT 'pending',
---         applied_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
---         FOREIGN KEY (jam_id) REFERENCES jams(id),
---         FOREIGN KEY (user_id) REFERENCES users(id)
--- );
+CREATE TABLE jams (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    start_date DATETIME NOT NULL,
+    end_date DATETIME NOT NULL,
+    type ENUM('online', 'physical') DEFAULT 'online',
+    thumbnail VARCHAR(255),
+    organizator_id BIGINT UNSIGNED,
+    status ENUM('upcoming', 'active', 'ended') DEFAULT 'upcoming',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (organizator_id) REFERENCES users(id)
+);
+
+CREATE TABLE applications (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    jam_id INT,
+    user_id BIGINT UNSIGNED,
+    status ENUM('pending', 'accepted', 'rejected') DEFAULT 'pending',
+    applied_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (jam_id) REFERENCES jams(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
