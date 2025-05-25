@@ -92,6 +92,4 @@ require_once '../includes/footer.php';
         </div>
     </div>
 </div>
-
-<script src="../api/create_jam.js"></script>
 </body>
