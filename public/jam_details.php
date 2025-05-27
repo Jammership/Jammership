@@ -68,14 +68,14 @@ $hours = ($duration->days * 24) + $duration->h;
         <div class="header-container">
             <h1 class="create-jam-heading"><?= htmlspecialchars($jam['title']) ?></h1>
             <div class="header-actions">
-                <a href="dashboard.php" class="btn btn-gradient me-2">
+                <a href="dashboard.php" class="btn btn-account">
                     <i class="bi bi-arrow-left"></i> Back to Dashboard
                 </a>
                 <?php if (isset($_SESSION['id']) && $jam['organizator_id'] == $_SESSION['id']): ?>
-                    <a href="edit_jam.php?id=<?= $jam['id'] ?>" class="btn btn-gradient me-2">
+                    <a href="edit_jam.php?id=<?= $jam['id'] ?>" class="btn btn-account">
                         <i class="bi bi-pencil"></i> Edit Jam
                     </a>
-                    <a href="view_applications.php?jam_id=<?= $jam['id'] ?>" class="btn btn-gradient me-2">
+                    <a href="view_applications.php?jam_id=<?= $jam['id'] ?>" class="btn btn-account">
                         <i class="bi bi-people"></i> View Applications
                     </a>
                 <?php endif; ?>

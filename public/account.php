@@ -19,10 +19,10 @@ require_once '../includes/footer.php';
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="../assets/css/account.css">
-<link rel="stylesheet" href="../assets/css/dashboard.css">
-<script src="../api/account.js"></script>
-<script src="../api/logout.js"></script>
+<link rel="stylesheet" href="assets/css/account.css">
+<link rel="stylesheet" href="assets/css/dashboard.css">
+<script src="assets/js/account.js"></script>
+<script src="assets/js/logout.js"></script>
 
 <body>
 <div class="area">
@@ -47,7 +47,7 @@ require_once '../includes/footer.php';
             <a href="dashboard.php" class="btn btn-outline-secondary me-2">
                 <i class="bi bi-arrow-left"></i> Back to Dashboard
             </a>
-            <button class="btn btn-outline-danger" onclick="logoutUser('../index.php')">Logout</button>
+            <button class="btn btn-outline-danger" onclick="logoutUser()">Logout</button>
         </div>
     </div>
 

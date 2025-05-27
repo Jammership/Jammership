@@ -49,21 +49,28 @@ $jams = $jamManager->getOrganizerJams($_SESSION['id']);
 <div class="container">
     <div class="header-container">
         <h1 class="create-jam-heading">Organizer Dashboard</h1>
-        <div>
-            <a href="create_jam.php" class="btn btn-outline-primary me-2">
+        <div class="d-flex align-items-center" style="gap: 16px;">
+            <a href="create_jam.php" class="btn btn-account">
                 <i class="bi bi-plus-lg"></i> Create New Jam
             </a>
+<<<<<<< HEAD:api/organizer_dashboard.php
+            <a href="dashboard.php" class="btn btn-account">
+                <i class="bi bi-arrow-left"></i> Back to Dashboard
+            </a>
+            <button class="btn btn-logout" onclick="logoutUser()">Logout</button>
+=======
             <div>
                 <a href="dashboard.php" class="btn btn-gradient me-2">
                     <i class="bi bi-arrow-left"></i> Back to Dashboard
                 </a>
                 <button class="btn btn-gradient" onclick="logoutUser('../index.php')">Logout</button>
             </div>
+>>>>>>> c1d9948dcb37833a371fd10d0f7128cd3dc2dd19:public/organizer_dashboard.php
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
-            <h2>Your Game Jams</h2>
+            <h2 class="create-jam-heading">Your Game Jams</h2>
             <?php if (count($jams) > 0): ?>
                 <?php foreach ($jams as $jam): ?>
                     <div class="jam-card jam-card-flex">
@@ -81,13 +88,13 @@ $jams = $jamManager->getOrganizerJams($_SESSION['id']);
                                 <strong>End:</strong> <?= date('M j, Y, g:i a', strtotime($jam['end_date'])) ?>
                             </div>
                             <div>
-                                <a href="view_applications.php?jam_id=<?= $jam['id'] ?>" class="btn btn-sm btn-info">
+                                <a href="view_applications.php?jam_id=<?= $jam['id'] ?>" class="btn btn-account">
                                     <?= $jam['application_count'] ?> Applications
                                 </a>
                             </div>
                         </div>
                         <div class="jam-actions">
-                            <a href="edit_jam.php?id=<?= $jam['id'] ?>" class="btn btn-sm btn-primary">
+                            <a href="edit_jam.php?id=<?= $jam['id'] ?>" class="btn btn-logout">
                                 <i class="bi bi-pencil"></i> Edit
                             </a>
                         </div>

@@ -130,7 +130,7 @@ class GameJam
               FROM applications a
               JOIN users u ON a.user_id = u.id
               WHERE a.jam_id = :jam_id
-              ORDER BY a.applied_at DESC";
+              ORDER BY a.created_at DESC";
 
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':jam_id', $jamId, PDO::PARAM_INT);
