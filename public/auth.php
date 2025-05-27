@@ -1,12 +1,21 @@
 <?php
 session_start();
+// Assuming 'includes' directory is at the root level (Jammership/includes/)
 require_once '../includes/header.php';
 require_once '../includes/footer.php';
 
 if (isset($_SESSION['id'])) {
+    // Assuming dashboard.php is in the same 'public' directory
     header('Location: dashboard.php');
     exit;
 }
+
+// Note: The isUserLoggedIn() function is expected to be defined,
+// likely in header.php or another included file.
+// It would typically check isset($_SESSION['id']).
+// However, due to the redirect above, if a PHP session exists,
+// this part of the code (rendering the body) won't be reached.
+// The JavaScript will handle UI based on sessionStorage.
 ?>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
@@ -16,9 +25,12 @@ if (isset($_SESSION['id'])) {
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="assets/css/auth.css">
-<script src="assets/js/auth.js"></script>
-<script src="assets/js/logout.js"></script>
+
+<!-- Assuming 'assets' directory is at the root level (Jammership/assets/) -->
+<link rel="stylesheet" href="../assets/css/auth.css">
+<!-- Assuming 'api' directory is at the root level (Jammership/api/) -->
+<script src="../api/auth.js"></script>
+<script src="../api/logout.js"></script> <!-- Assuming logout.js is also in ../api/ -->
 
 <body>
 <div class="area">
@@ -44,10 +56,21 @@ if (isset($_SESSION['id'])) {
 <div class="jammership-wrapper">
     <h1 class="jammership-heading">Jammership</h1>
     <div class="container">
+<<<<<<< HEAD:api/auth.php
         <div id="main-container" class="main-container" style="<?php echo isUserLoggedIn() ? 'display:block' : 'display:none' ?>">
-            <button id="logout-button" class="btn btn-danger" onclick="logoutUser()">Logout</button>
+            <button id="logout-button" class="btn btn-logout" onclick="logoutUser()">Logout</button>
+=======
+        <?php
+        // This PHP check for isUserLoggedIn() will effectively always be false here
+        // because if the user *was* logged in (PHP session), they'd be redirected.
+        // The JavaScript logic below will manage visibility based on sessionStorage.
+        $isPHPLogged = function_exists('isUserLoggedIn') && isUserLoggedIn();
+        ?>
+        <div id="main-container" class="main-container" style="<?php echo $isPHPLogged ? 'display:block' : 'display:none' ?>">
+            <button id="logout-button" class="btn btn-danger" onclick="logoutUser('../index.php')">Logout</button>
+>>>>>>> c1d9948dcb37833a371fd10d0f7128cd3dc2dd19:public/auth.php
         </div>
-        <div id="auth-container" class="auth-container" style="<?php echo isUserLoggedIn() ? 'display:none' : 'display:block' ?>">
+        <div id="auth-container" class="auth-container" style="<?php echo $isPHPLogged ? 'display:none' : 'display:block' ?>">
             <div id="login-section">
                 <h2 class="text-center mb-4">Game Jam Login</h2>
                 <form id="login-form">

@@ -65,10 +65,20 @@ $applications = $jamManager->getJamApplications($_GET['jam_id']);
     <div class="header-container">
         <h1>Applications for "<?= htmlspecialchars($jam['title']) ?>"</h1>
         <div>
+<<<<<<< HEAD:api/view_applications.php
+            <button class="btn btn-account" onclick="window.location.href='dashboard.php'">
+                Back to Dashboard
+            </button>
+            <button id="logout-button" class="btn btn-logout" onclick="logoutUser()">Logout</button>
+=======
             <a href="organizer_dashboard.php" class="btn btn-outline-secondary me-2">
                 <i class="bi bi-arrow-left"></i> Back to Organizer Dashboard
             </a>
             <button class="btn btn-outline-danger" onclick="logoutUser('../index.php')">Logout</button>
+<<<<<<< Updated upstream
+=======
+>>>>>>> c1d9948dcb37833a371fd10d0f7128cd3dc2dd19:public/view_applications.php
+>>>>>>> Stashed changes
         </div>
     </div>
 
