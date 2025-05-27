@@ -78,6 +78,10 @@ $applications = $jamManager->getJamApplications($_GET['jam_id']);
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+>>>>>>> c1d9948dcb37833a371fd10d0f7128cd3dc2dd19:public/view_applications.php
+>>>>>>> Stashed changes
 =======
 >>>>>>> c1d9948dcb37833a371fd10d0f7128cd3dc2dd19:public/view_applications.php
 >>>>>>> Stashed changes
