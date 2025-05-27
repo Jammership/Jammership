@@ -7,33 +7,31 @@
 .jammership-heading {
     font-family: 'Montserrat', Arial, sans-serif;
     font-weight: 900;
-    font-size: 8rem;
-    letter-spacing: 3px;
+    font-size: clamp(3rem, 8vw, 7rem);
+    letter-spacing: 4px;
     color: #fff;
     background: linear-gradient(90deg, #ffb347 0%, #ff5e62 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow:
-            0 4px 24px rgba(133, 65, 255, 0.4),
-            0 1px 0 #fff,
-            2px 2px 8px #b064f6;
-    position: absolute;
-    top: 100px;
-    left: 50%;
-    transform: translateX(-50%);
+            0 6px 32px rgba(133, 65, 255, 0.5),
+            0 2px 0 #fff,
+            4px 4px 16px #b064f6;
+    margin-bottom: 3rem;
+    margin-top: 0 !important;
+    padding-top:100px !important;
+    padding-bottom: 100px !important;
     text-align: center;
+    position: relative;
     z-index: 2;
 }
+
 .jammership-wrapper {
     width: 100vw;
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: relative;
+    padding-top: 0;
 }
-
-
 * {
     margin: 0px;
     padding: 0px;

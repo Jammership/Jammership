@@ -45,7 +45,7 @@ $jams = $jamManager->getAllJams();
     <div class="header-container">
         <h1 class="create-jam-heading">Game Jams</h1>
         <div>
-            <span class="me-2">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
+            <span class="welcome-text">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
 
             <?php if ($_SESSION['role'] === 'organizer'): ?>
                 <a href="organizer_dashboard.php" class="btn btn-outline-primary me-2">
@@ -53,10 +53,10 @@ $jams = $jamManager->getAllJams();
                 </a>
             <?php endif; ?>
 
-            <a href="account.php" class="btn btn-outline-primary me-2">
+            <a href="account.php" class="btn btn-account">
                 <i class="bi bi-person-circle"></i> Account
             </a>
-            <button class="btn btn-outline-danger" onclick="logoutUser('../index.php')">Logout</button>
+            <button id="logout-button" class="btn-logout" onclick="logoutUser('../index.php')">Logout</button>
 
         </div>
     </div>

@@ -64,11 +64,11 @@ $applications = $jamManager->getJamApplications($_GET['jam_id']);
 <div class="container">
     <div class="header-container">
         <h1>Applications for "<?= htmlspecialchars($jam['title']) ?>"</h1>
-        <div>
-            <a href="organizer_dashboard.php" class="btn btn-outline-secondary me-2">
+        <div style="display: flex; gap: 12px;">
+            <a href="organizer_dashboard.php" class="btn btn-gradient">
                 <i class="bi bi-arrow-left"></i> Back to Organizer Dashboard
             </a>
-            <button class="btn btn-outline-danger" onclick="logoutUser('../index.php')">Logout</button>
+            <button class="btn btn-logout" onclick="logoutUser('../index.php')">Logout</button>
         </div>
     </div>
 

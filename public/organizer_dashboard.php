@@ -49,16 +49,14 @@ $jams = $jamManager->getOrganizerJams($_SESSION['id']);
 <div class="container">
     <div class="header-container">
         <h1 class="create-jam-heading">Organizer Dashboard</h1>
-        <div>
-            <a href="create_jam.php" class="btn btn-outline-primary me-2">
+        <div style="display: flex; gap: 12px;">
+            <a href="create_jam.php" class="btn btn-outline-primary">
                 <i class="bi bi-plus-lg"></i> Create New Jam
             </a>
-            <div>
-                <a href="dashboard.php" class="btn btn-gradient me-2">
-                    <i class="bi bi-arrow-left"></i> Back to Dashboard
-                </a>
-                <button class="btn btn-gradient" onclick="logoutUser('../index.php')">Logout</button>
-            </div>
+            <a href="dashboard.php" class="btn btn-gradient">
+                <i class="bi bi-arrow-left"></i> Back to Dashboard
+            </a>
+            <button class="btn btn-gradient" onclick="logoutUser('../index.php')">Logout</button>
         </div>
     </div>
     <div class="row">

@@ -61,14 +61,14 @@ if (!$jam || $jam['organizator_id'] != $_SESSION['id']) {
 <div class="container">
     <div class="header-container">
         <h1 class="create-jam-heading">Edit Game Jam</h1>
-        <div>
-            <a href="view_applications.php?jam_id=<?= $jam['id'] ?>" class="btn btn-outline-primary me-2">
+        <div style="display: flex; gap: 12px;">
+            <a href="view_applications.php?jam_id=<?= $jam['id'] ?>" class="btn btn-outline-primary">
                 <i class="bi bi-people"></i> View Applications
             </a>
-            <a href="organizer_dashboard.php" class="btn btn-outline-secondary me-2">
+            <a href="organizer_dashboard.php" class="btn btn-gradient">
                 <i class="bi bi-arrow-left"></i> Back
             </a>
-            <button class="btn btn-outline-danger" onclick="logoutUser('../index.php')">Logout</button>
+            <button class="btn btn-logout" onclick="logoutUser('../index.php')">Logout</button>
         </div>
     </div>
 
@@ -121,9 +121,9 @@ if (!$jam || $jam['organizator_id'] != $_SESSION['id']) {
                         <?php endif; ?>
                     </div>
 
-                    <div class="button-group mt-4 d-flex justify-content-between">
-                        <button type="submit" class="btn btn-primary">Update Jam</button>
-                        <button type="button" id="delete-jam-btn" class="btn btn-danger" data-jam-id="<?= $jam['id'] ?>">Delete Jam</button>
+                    <div class="button-group mt-4 d-flex justify-content-between" style="gap: 12px;">
+                        <button type="submit" class="btn btn-gradient">Update Jam</button>
+                        <button type="button" id="delete-jam-btn" class="btn btn-pastel-danger" data-jam-id="<?= $jam['id'] ?>">Delete Jam</button>
                     </div>
                 </form>
             </div>
