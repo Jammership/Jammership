@@ -56,7 +56,7 @@ $jams = $jamManager->getAllJams();
             <a href="account.php" class="btn btn-account">
                 <i class="bi bi-person-circle"></i> Account
             </a>
-            <button id="logout-button" class="btn-logout" onclick="logoutUser('../index.php')">Logout</button>
+            <button id="logout-button" class="btn btn-logout" onclick="logoutUser('../index.php')">Logout</button>
 
         </div>
     </div>

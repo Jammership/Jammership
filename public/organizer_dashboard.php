@@ -56,7 +56,7 @@ $jams = $jamManager->getOrganizerJams($_SESSION['id']);
             <a href="dashboard.php" class="btn btn-gradient">
                 <i class="bi bi-arrow-left"></i> Back to Dashboard
             </a>
-            <button class="btn btn-gradient" onclick="logoutUser('../index.php')">Logout</button>
+            <button class="btn btn-logout" onclick="logoutUser('../index.php')">Logout</button>
         </div>
     </div>
     <div class="row">

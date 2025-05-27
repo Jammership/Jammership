@@ -63,7 +63,7 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 32px;
-    padding: 0 24px;
+    padding: 0;
     color: #222;
     position: relative;
     z-index: 1;
@@ -185,6 +185,10 @@ body {
     color: #2c445a !important;
 }
 
+#logout-button {
+    margin-left: 6px;
+}
+
 /* --- Soft Pastel Logout Button --- */
 .btn-logout {
     background: linear-gradient(90deg, #f7c6d9 0%, #f7b267 100%);
@@ -294,20 +298,21 @@ a:hover {
 }
 
 .create-jam-heading {
-    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif;
     font-weight: 900;
     font-size: 3rem;
     letter-spacing: 2px;
     text-align: center;
-    background: linear-gradient(90deg, #6e8efb 0%, #a777e3 100%);
+    background: linear-gradient(90deg, #ffb347 0%, #ff5e62 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     color: transparent;
     margin-bottom: 24px;
     text-shadow:
-            0 2px 12px rgba(167,119,227,0.15),
-            0 1px 0 #fff;
+            0 6px 32px rgba(133, 65, 255, 0.5),
+            0 2px 0 #fff,
+            4px 4px 16px #b064f6;
 }
 .btn-gradient {
     background: linear-gradient(90deg, #a1c4fd 0%, #c2e9fb 100%);
