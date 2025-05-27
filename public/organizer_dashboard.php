@@ -46,19 +46,27 @@ $jams = $jamManager->getOrganizerJams($_SESSION['id']);
         <li></li>
     </ul>
 </div>
-<div class="container">
-    <div class="header-container">
-        <h1 class="create-jam-heading">Organizer Dashboard</h1>
-        <div style="display: flex; gap: 12px;">
-            <a href="create_jam.php" class="btn btn-outline-primary">
-                <i class="bi bi-plus-lg"></i> Create New Jam
-            </a>
-            <a href="dashboard.php" class="btn btn-gradient">
-                <i class="bi bi-arrow-left"></i> Back to Dashboard
-            </a>
-            <button class="btn btn-logout" onclick="logoutUser('../index.php')">Logout</button>
+<div class="header-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="header-content" style="display: flex; justify-content: space-between; align-items: center;">
+                    <h1 class="create-jam-heading">Organizer Dashboard</h1>
+                    <div style="display: flex; gap: 12px;">
+                        <a href="create_jam.php" class="btn btn-outline-primary">
+                            <i class="bi bi-plus-lg"></i> Create New Jam
+                        </a>
+                        <a href="dashboard.php" class="btn btn-gradient">
+                            <i class="bi bi-arrow-left"></i> Back to Dashboard
+                        </a>
+                        <button class="btn btn-logout" onclick="logoutUser('../index.php')">Logout</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</div>
+<div class="container">
     <div class="row">
         <div class="col-md-12">
             <h2>Your Game Jams</h2>
