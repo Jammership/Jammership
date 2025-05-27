@@ -61,5 +61,3 @@ Visit the live website here: [jammership.free.nf](jammership.free.nf)
 3. Access the app via `index.php` — you will be redirected to login or dashboard as appropriate.
 
 ---
-
-Feel free to expand on any section or add setup instructions as needed!
