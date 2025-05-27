@@ -5,6 +5,7 @@ Jammership is a web application for organizing, managing, and participating in g
 ## Live Demo
 
 Visit the live website here: [jammership.free.nf](jammership.free.nf)
+![Screenshot_2](https://github.com/user-attachments/assets/27bdd876-206c-4afc-b8f1-1a3a1224adad)
 
 ## Features
 
