@@ -24,9 +24,12 @@ $jams = $jamManager->getAllJams();
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <link rel="stylesheet" href="../assets/css/dashboard.css">
 <script src="../api/logout.js"></script>
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 <<<<<<< HEAD:api/dashboard.php
@@ -38,6 +41,9 @@ $jams = $jamManager->getAllJams();
 <script src="../api/logout.js"></script>
 >>>>>>> c1d9948dcb37833a371fd10d0f7128cd3dc2dd19:public/dashboard.php
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -75,6 +81,12 @@ $jams = $jamManager->getAllJams();
             </a>
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD:api/dashboard.php
+            <button id="logout-button" class="btn btn-logout" onclick="logoutUser()">Logout</button>
+=======
+>>>>>>> Stashed changes
 =======
 <<<<<<< HEAD:api/dashboard.php
             <button id="logout-button" class="btn btn-logout" onclick="logoutUser()">Logout</button>
