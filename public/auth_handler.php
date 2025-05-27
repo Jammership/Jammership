@@ -1,25 +1,21 @@
 <?php
-ini_set('display_errors', 1); // Force display of errors
-ini_set('display_startup_errors', 1); // Display errors during PHP startup
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 ob_start();
 
 session_start([
-    'cookie_lifetime' => 86400, // 24 hours (24 * 60 * 60 seconds)
-    'cookie_secure'   => false, // Should be true in production with HTTPS
+    'cookie_lifetime' => 86400,
+    'cookie_secure'   => false,
     'cookie_httponly' => true,
     'cookie_samesite' => 'Lax'
 ]);
 
-// Assuming 'config.php' is at the root level (Jammership/config.php)
 require_once __DIR__ . '/../config.php';
-// Assuming 'classes' directory is at the root level (Jammership/classes/)
 require_once __DIR__ . '/../classes/database.php';
-require_once __DIR__ . '/../classes/user.php';   // user class
+require_once __DIR__ . '/../classes/user.php';
 
-// For development, '*' is okay. For production, restrict to your frontend's domain.
-// e.g., header("Access-Control-Allow-Origin: https://yourfrontenddomain.com");
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
@@ -35,7 +31,7 @@ $user = new user($db);
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'register') {
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-    $password = $_POST['password']; // Password will be hashed, so no direct sanitization here
+    $password = $_POST['password'];
     $userType = filter_input(INPUT_POST, 'userType', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     if (!$username) {
@@ -47,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         exit;
     }
 
-    if (strlen($password) < 8) { // Check for minimum 8 characters
+    if (strlen($password) < 8) {
         echo json_encode(['success' => false, 'message' => 'Password must be at least 8 characters long']);
         exit;
     }
@@ -56,7 +52,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         if ($user->register($email, $password, $userType, $username)) {
             echo json_encode(['success' => true, 'message' => 'Registration successful! You can now login.']);
         } else {
-            // This 'else' might be redundant if $user->register throws exceptions for specific failures
             echo json_encode(['success' => false, 'message' => 'Registration failed. Email or username may already be registered.']);
         }
     } catch (PDOException $e) {
@@ -65,11 +60,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         } else if ($e->getCode() == 23000 && str_contains($e->getMessage(), 'Duplicate entry') && str_contains($e->getMessage(), 'email')) {
             echo json_encode(['success' => false, 'message' => 'Email already registered. Please use a different email or login.']);
         } else {
-            // Log the detailed error for server admin, provide generic message to user
             error_log('Registration PDOException: ' . $e->getMessage());
             echo json_encode(['success' => false, 'message' => 'An error occurred during registration. Please try again.']);
         }
-    }  catch (Exception $e) { // Catch other general exceptions from the User class
+    }  catch (Exception $e) {
         error_log('Registration Exception: ' . $e->getMessage());
         echo json_encode(['success' => false, 'message' => $e->getMessage()]); // Or a generic message
     }
@@ -78,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'login') {
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $password = $_POST['password'];
-    $userType = $_POST['userType'] ?? 'jammer'; // Default to 'jammer' if not provided
+    $userType = $_POST['userType'] ?? 'jammer';
 
     if (!$username) {
         echo json_encode(['success' => false, 'message' => 'Username is required']);
@@ -92,13 +86,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 
     try {
         if ($user->login($username, $password, $userType)) {
-            session_regenerate_id(true); // Regenerate session ID on login for security
+            session_regenerate_id(true);
             echo json_encode([
                 'success' => true,
                 'message' => 'Login successful',
                 'user' => [
                     'id' => $_SESSION['id'],
-                    'email' => $_SESSION['email'], // Ensure 'email' is set in session by login method
+                    'email' => $_SESSION['email'],
                     'role' => $_SESSION['role'],
                     'username' => $_SESSION['username']
                 ]
@@ -119,14 +113,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         error_log('Login Exception: ' . $e->getMessage());
         echo json_encode([
             'success' => false,
-            'message' => $e->getMessage() // Or a generic message
+            'message' => $e->getMessage()
         ]);
     }
 }
 
-// Handle logout requests
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'logout') {
-    $user->logout(); // This method should handle session_destroy() and clear session variables
+    $user->logout();
     echo json_encode([
         'success' => true,
         'message' => 'Logged out successfully'

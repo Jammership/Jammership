@@ -2,7 +2,6 @@
 session_start();
 header('Content-Type: application/json');
 
-// Check if user is logged in and is an organizer
 if (!isset($_SESSION['id']) || $_SESSION['role'] !== 'organizer') {
     echo json_encode(['success' => false, 'message' => 'Unauthorized']);
     exit;
@@ -16,7 +15,6 @@ $jamManager = new GameJam($db);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['action']) && $_POST['action'] === 'update_application_status') {
-        // Check if all required fields are provided
         if (!isset($_POST['application_id']) || !isset($_POST['status'])) {
             echo json_encode(['success' => false, 'message' => 'Missing required fields']);
             exit;

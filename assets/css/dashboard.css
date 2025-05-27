@@ -69,6 +69,28 @@ body {
     z-index: 1;
 }
 
+.header-container > div {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 600px) {
+    .header-container > div {
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+        align-items: stretch;
+    }
+    .header-container a,
+    .header-container button {
+        width: 100%;
+    }
+}
+
 /* --- Jam Card --- */
 .jam-card {
     background: rgb(176, 197, 255);
@@ -185,10 +207,6 @@ body {
     color: #2c445a !important;
 }
 
-#logout-button {
-    margin-left: 6px;
-}
-
 /* --- Soft Pastel Logout Button --- */
 .btn-logout {
     background: linear-gradient(90deg, #f7c6d9 0%, #f7b267 100%);
@@ -227,16 +245,42 @@ a:hover {
 
 /* --- Status badges --- */
 .status-badge {
-    display: inline-block;
-    padding: 5px 10px;
+    padding: 6px 12px;
     border-radius: 20px;
-    font-weight: bold;
-    font-size: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    display: inline-block;
+    margin-bottom: 15px;
 }
+
 
 .status-pending { background-color: #fcf8e3; color: #8a6d3b; }
 .status-accepted { background-color: #dff0d8; color: #3c763d; }
 .status-rejected { background-color: #f2dede; color: #a94442; }
+
+.status-active {
+    background: linear-gradient(90deg, #4caf50, #8bc34a);
+    color: white;
+}
+
+.status-upcoming {
+    background: linear-gradient(90deg, #2196f3, #03a9f4);
+    color: white;
+}
+
+.status-completed {
+    background: linear-gradient(90deg, #9c27b0, #673ab7);
+    color: white;
+}
+
+.status-draft {
+    background: linear-gradient(90deg, #607d8b, #90a4ae);
+    color: white;
+}
+
 
 /* --- Avatar image --- */
 .avatar-img {
@@ -247,14 +291,157 @@ a:hover {
 
 /* --- Jam info section --- */
 .jam-info {
-    background-color: #f9f9ff;
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-left: 4px solid #6e8efb;
+    background: linear-gradient(135deg, rgba(209, 223, 255, 0.8) 0%, rgba(226, 217, 255, 0.85) 100%);
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(110, 142, 251, 0.15),
+    inset 0 1px 4px rgba(255, 255, 255, 0.8);
+    padding: 30px 35px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1.5px solid rgba(255, 255, 255, 0.6);
+    transition: all 0.3s ease;
+}
+
+.jam-info::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(167, 119, 227, 0.08) 0%, transparent 70%);
+    z-index: 0;
+}
+
+.jam-info:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 36px rgba(110, 142, 251, 0.2),
+    inset 0 1px 5px rgba(255, 255, 255, 0.9);
+}
+
+.jam-info h3 {
+    color: #375fe8;
+    margin-top: 0;
+    margin-bottom: 24px;
+    font-weight: 700;
+    font-size: 2rem; /* Increased from 1.6rem */
+    letter-spacing: -0.5px;
+    border-bottom: 2px solid rgba(110, 142, 251, 0.25);
+    padding-bottom: 12px;
     position: relative;
     z-index: 1;
 }
+
+.jam-info .row {
+    position: relative;
+    z-index: 1;
+}
+
+.jam-info p {
+    margin-bottom: 18px;
+    font-size: 1.3rem; /* Increased from 1.1rem */
+    position: relative;
+    padding: 12px 18px;
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(110, 142, 251, 0.08);
+    border-left: 4px solid #6e8efb;
+    transition: all 0.2s ease;
+}
+
+.jam-info p:hover {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 12px rgba(110, 142, 251, 0.12);
+    transform: translateX(3px);
+}
+
+.jam-info p strong {
+    color: #375fe8;
+    font-weight: 600;
+    display: inline-block;
+    min-width: 140px;
+    text-transform: uppercase;
+    font-size: 1.1rem; /* Increased from 0.9rem */
+    letter-spacing: 0.5px;
+}
+
+/* Style for dates to make them stand out */
+.jam-info p:nth-child(2),
+.jam-info p:nth-child(3) {
+    border-left: 4px solid #a777e3;
+    background: rgba(222, 212, 252, 0.4);
+}
+
+/* Special styling for status */
+.jam-info p:first-child {
+    border-left: 4px solid #6e8efb;
+}
+
+.jam-info p:first-child::after {
+    content: attr(data-status);
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 1rem; /* Increased from 0.85rem */
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Status-specific coloring */
+.jam-info[data-status="active"] p:first-child::after {
+    background: linear-gradient(90deg, #4caf50, #8bc34a);
+    color: white;
+}
+
+.jam-info[data-status="upcoming"] p:first-child::after {
+    background: linear-gradient(90deg, #2196f3, #03a9f4);
+    color: white;
+}
+
+.jam-info[data-status="completed"] p:first-child::after {
+    background: linear-gradient(90deg, #9c27b0, #673ab7);
+    color: white;
+}
+
+.jam-info[data-status="draft"] p:first-child::after {
+    background: linear-gradient(90deg, #607d8b, #90a4ae);
+    color: white;
+}
+
+/* Special styling for applications count */
+.jam-info p:nth-child(2):last-child {
+    border-left: 4px solid #ff9800;
+    background: rgba(255, 235, 205, 0.4);
+}
+
+/* Media queries for responsive design */
+@media (max-width: 767px) {
+    .jam-info {
+        padding: 20px 25px;
+    }
+
+    .jam-info h3 {
+        font-size: 1.8rem; /* Increased from 1.4rem */
+    }
+
+    .jam-info p {
+        font-size: 1.2rem; /* Increased from 1rem */
+        padding: 10px 15px;
+    }
+
+    .jam-info p strong {
+        min-width: 130px;
+        font-size: 1rem; /* Increased from 0.85rem */
+    }
+}
+
 
 .container {
     position: relative;
@@ -265,30 +452,109 @@ a:hover {
 .jam-card-flex {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: stretch;
     justify-content: space-between;
     gap: 32px;
     margin-bottom: 24px;
 }
 
 .jam-details {
-    flex: 1;
-    min-width: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(230, 237, 255, 0.5) 100%);
+    border-radius: 14px;
+    padding: 22px 25px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1.5px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 20px rgba(110, 142, 251, 0.12),
+    inset 0 1px 3px rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.jam-details::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(167, 119, 227, 0.08) 0%, transparent 70%);
+    z-index: -1;
+}
+
+.jam-details:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(110, 142, 251, 0.18),
+    inset 0 1px 5px rgba(255, 255, 255, 0.9);
 }
 
 .jam-details h3 {
-    margin-top: 0;
-    margin-bottom: 8px;
-    font-size: 1.5rem;
     color: #375fe8;
+    margin-top: 0;
+    margin-bottom: 18px;
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: -0.3px;
+    border-bottom: 2px solid rgba(110, 142, 251, 0.2);
+    padding-bottom: 10px;
+}
+
+.jam-details div {
+    margin-bottom: 16px;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+}
+
+.jam-details div:last-child {
+    margin-bottom: 0;
+}
+
+/* Date display styling */
+.jam-details div:nth-child(3),
+.jam-details div:nth-child(4) {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin: 12px 0;
+    border-left: 4px solid #6e8efb;
+    font-size: 1.2rem;
+    display: block;
+    transition: all 0.2s ease;
+}
+
+.jam-details div:nth-child(3):hover,
+.jam-details div:nth-child(4):hover {
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 8px rgba(110, 142, 251, 0.1);
+}
+
+.jam-details div:nth-child(3) strong,
+.jam-details div:nth-child(4) strong {
+    color: #375fe8;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-right: 10px;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+
+.jam-action-btn {
+    width: 140px;
+    text-align: center;
+    margin: 5px;
+    display: inline-block;
 }
 
 .jam-actions {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 12px;
-    align-items: flex-end;
-    justify-content: flex-start;
 }
 
 .header-actions {

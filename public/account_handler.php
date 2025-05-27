@@ -3,7 +3,6 @@ session_start();
 require_once '../classes/database.php';
 require_once '../classes/user.php';
 
-// Ensure user is logged in
 if (!isset($_SESSION['id'])) {
     echo json_encode(['success' => false, 'message' => 'Not logged in']);
     exit;
@@ -11,7 +10,6 @@ if (!isset($_SESSION['id'])) {
 
 $user = new User(database::getInstance()->getConnection());
 
-// Handle account information updates
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'update_account') {
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 
@@ -37,7 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     }
 }
 
-// Handle password changes
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'change_password') {
     $currentPassword = $_POST['current_password'] ?? '';
     $newPassword = $_POST['new_password'] ?? '';
@@ -70,7 +67,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     }
 }
 
-// Handle account deletion
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'delete_account') {
     try {
         $result = $user->deleteAccount($_SESSION['id']);
