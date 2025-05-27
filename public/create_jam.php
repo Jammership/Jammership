@@ -38,15 +38,11 @@ require_once '../includes/footer.php';
 <div class="container">
     <div class="header-container">
         <h1 class="create-jam-heading">Create New Game Jam</h1>
-        <div>
+        <div class="d-flex align-items-center" style="gap: 16px;">
             <a href="dashboard.php" class="btn btn-account">
                 <i class="bi bi-arrow-left"></i> Back to Dashboard
             </a>
-<<<<<<< HEAD:api/create_jam.php
             <button id="logout-button" class="btn btn-logout" onclick="logoutUser()">Logout</button>
-=======
-            <button class="btn btn-gradient" onclick="logoutUser('../index.php')">Logout</button>
->>>>>>> c1d9948dcb37833a371fd10d0f7128cd3dc2dd19:public/create_jam.php
         </div>
     </div>
 

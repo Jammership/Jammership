@@ -68,11 +68,7 @@ if (!$jam || $jam['organizator_id'] != $_SESSION['id']) {
             <a href="organizer_dashboard.php" class="btn btn-account me-2">
                 <i class="bi bi-arrow-left"></i> Back
             </a>
-<<<<<<< HEAD:api/edit_jam.php
             <button id="logout-button" class="btn btn-logout" onclick="logoutUser()">Logout</button>
-=======
-            <button class="btn btn-outline-danger" onclick="logoutUser('../index.php')">Logout</button>
->>>>>>> c1d9948dcb37833a371fd10d0f7128cd3dc2dd19:public/edit_jam.php
         </div>
     </div>
 

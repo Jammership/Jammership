@@ -53,19 +53,11 @@ $jams = $jamManager->getOrganizerJams($_SESSION['id']);
             <a href="create_jam.php" class="btn btn-account">
                 <i class="bi bi-plus-lg"></i> Create New Jam
             </a>
-<<<<<<< HEAD:api/organizer_dashboard.php
             <a href="dashboard.php" class="btn btn-account">
                 <i class="bi bi-arrow-left"></i> Back to Dashboard
             </a>
             <button class="btn btn-logout" onclick="logoutUser()">Logout</button>
-=======
-            <div>
-                <a href="dashboard.php" class="btn btn-gradient me-2">
-                    <i class="bi bi-arrow-left"></i> Back to Dashboard
-                </a>
-                <button class="btn btn-gradient" onclick="logoutUser('../index.php')">Logout</button>
-            </div>
->>>>>>> c1d9948dcb37833a371fd10d0f7128cd3dc2dd19:public/organizer_dashboard.php
+
         </div>
     </div>
     <div class="row">
